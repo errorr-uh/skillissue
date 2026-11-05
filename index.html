@@ -1,0 +1,464 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#08080a">
+<title>SkillIssue Downloader</title><meta name="description" content="Download any video in 360P, 480P, 720P or 1080P. Or edit it first: trim, crop, GIF, FPS, audio, background removal.">
+<link rel="preconnect" href="https://fvz.onrender.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"><style>
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+:root{--ac:#d3132f;--tx:#f3eeee;--mu:#a79ea3;--hair:rgba(255,255,255,.12)}
+body{background:#08080a;color:var(--tx);font:400 16px/1.6 Inter,system-ui,sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:url(data:image/jpeg;base64,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) 70% 20%/cover no-repeat;filter:saturate(.9)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(8,8,10,.92) 0%,rgba(8,8,10,.7) 45%,rgba(8,8,10,.35) 100%),linear-gradient(0deg,#08080a 0%,transparent 40%)}
+a{color:inherit;text-decoration:none}
+html,body{overflow-x:hidden;max-width:100%;-webkit-text-size-adjust:100%}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:26px 6vw}
+.brand{font:600 1.15rem "Cormorant Garamond",serif;letter-spacing:.38em;text-transform:uppercase}
+.pill{border:1px solid var(--hair);padding:9px 20px;border-radius:99px;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;backdrop-filter:blur(10px);background:rgba(255,255,255,.05);transition:.3s;color:var(--tx)}
+.pill:hover{background:var(--ac);border-color:var(--ac)}
+.hero{padding:7vh 6vw 4vh;max-width:860px}
+.eye{font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--ac);margin-bottom:22px}
+h1{font:500 clamp(2.6rem,7vw,5.2rem)/1.02 "Cormorant Garamond",serif;letter-spacing:-.01em}
+h1 em{font-style:italic;color:var(--ac)}
+.lead{margin-top:22px;max-width:560px;color:var(--mu);font-size:1.02rem}
+.seg{display:inline-flex;margin-top:30px;padding:4px;border:1px solid var(--hair);border-radius:99px;background:rgba(14,14,18,.55);backdrop-filter:blur(14px)}
+.seg button{font:600 .7rem Inter;letter-spacing:.2em;text-transform:uppercase;border:0;background:none;color:var(--mu);padding:10px 22px;border-radius:99px;cursor:pointer;transition:.25s}
+.seg button.on{background:linear-gradient(180deg,#ff3a57,#c40f2b);color:#fff;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.4)}
+.box{margin-top:22px;display:flex;gap:10px;padding:8px;border:1px solid var(--hair);border-radius:18px;background:rgba(14,14,18,.6);backdrop-filter:blur(18px)}
+.box input{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--tx);font:inherit;padding:0 14px}
+.box button{font:600 .72rem Inter;letter-spacing:.18em;text-transform:uppercase;border:0;border-radius:12px;padding:15px 22px;cursor:pointer;color:#fff;background:var(--ac)}
+.box button:disabled{opacity:.5}
+#loader{display:none;margin-top:18px;align-items:center;gap:14px;padding:16px 18px;border:1px solid var(--hair);border-radius:14px;background:rgba(14,14,18,.6);backdrop-filter:blur(14px)}
+#loader .sp{width:22px;height:22px;border-radius:50%;border:2px solid var(--hair);border-top-color:var(--ac);animation:r .8s linear infinite;flex:none}
+@keyframes r{to{transform:rotate(360deg)}}
+#loader b{display:block;font-weight:600}#loader-status-msg{color:var(--mu);font-size:.8rem}
+#error-box{display:none;margin-top:18px;gap:10px;align-items:center;color:#ff8c9a;border:1px solid rgba(211,19,47,.4);padding:14px 16px;border-radius:14px;background:rgba(211,19,47,.08)}
+#result-box{margin-top:22px;padding:18px;border:1px solid var(--hair);border-radius:18px;background:rgba(14,14,18,.65);backdrop-filter:blur(16px)}
+.rt{font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mu);margin-bottom:14px}
+.img-grid{display:none;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:12px}
+.img-card{position:relative;border-radius:12px;overflow:hidden}.img-card img{width:100%;display:block}
+.img-card-overlay{position:absolute;inset:auto 0 0;padding:8px;background:linear-gradient(0deg,rgba(0,0,0,.8),transparent)}
+.img-card-btn{font-size:.7rem;letter-spacing:.14em}
+.sec{padding:10vh 6vw 0;max-width:1000px}
+.sec h2{font:500 2rem "Cormorant Garamond",serif;margin-bottom:6px}
+.sec>p{color:var(--mu);margin-bottom:26px}
+.row{display:flex;gap:30px;padding:18px 0;border-top:1px solid var(--hair)}
+.row b{width:150px;flex:none;font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ac);padding-top:4px}
+.row span{color:#d9d2d4}
+.btm{margin-top:12vh;padding:34px 6vw 40px;text-align:center;font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--mu)}
+#toastBox{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:50;display:grid;gap:8px}
+.toast{padding:11px 18px;border-radius:12px;background:rgba(20,20,26,.95);border:1px solid var(--hair);font-size:.85rem;opacity:0;transform:translateY(10px);transition:.4s}.toast.show{opacity:1;transform:none}.toast.err{border-color:var(--ac)}
+#ngate{display:none}#ngate.on{display:block}
+.gate{padding:14px 0;color:var(--mu)}.gate button{margin-left:10px;background:none;border:1px solid var(--hair);color:var(--tx);padding:8px 16px;border-radius:99px;cursor:pointer;font:600 .68rem Inter;letter-spacing:.18em;text-transform:uppercase}
+.liquid{position:relative;overflow:hidden;border-radius:32px;padding:12px;align-items:center;background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.04));backdrop-filter:blur(26px) saturate(1.9) brightness(1.08);-webkit-backdrop-filter:blur(26px) saturate(1.9) brightness(1.08);border:1px solid rgba(255,255,255,.26);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -18px 36px rgba(255,255,255,.05),inset 0 0 0 1px rgba(255,255,255,.04),0 34px 80px -24px rgba(0,0,0,.85),0 0 60px -20px rgba(211,19,47,.45)}
+.liquid::before{content:"";position:absolute;left:6%;right:6%;top:0;height:46%;border-radius:0 0 60% 60%/0 0 100% 100%;background:linear-gradient(180deg,rgba(255,255,255,.28),transparent);pointer-events:none;z-index:1}
+.blobs{position:absolute;inset:0;filter:url(#goo);opacity:.7;z-index:0}
+.blobs s{position:absolute;width:150px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(255,60,90,.9),rgba(211,19,47,.0) 70%);animation:fl 9s ease-in-out infinite}
+.blobs s:nth-child(1){left:2%;top:-30%}.blobs s:nth-child(2){left:42%;top:40%;animation-delay:-3s;width:190px}.blobs s:nth-child(3){right:2%;top:-20%;animation-delay:-6s}
+@keyframes fl{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(60px,26px) scale(1.25)}66%{transform:translate(-40px,14px) scale(.85)}}
+.box>*:not(.blobs){position:relative;z-index:2}.box .lk{font-size:1.25rem;margin-left:14px;color:rgba(255,255,255,.7)}
+.box input{font-size:1rem;color:#fff}.box input::placeholder{color:rgba(255,255,255,.62)}
+.box button{border-radius:99px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),0 8px 22px -8px rgba(211,19,47,.8);background:linear-gradient(180deg,#ff3a57,#c40f2b)}
+.box button.g{background:rgba(255,255,255,.14);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.4)}
+#prev{display:none;gap:16px;align-items:center;margin-top:16px;padding:12px;border-radius:22px;border:1px solid rgba(255,255,255,.18);background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.03));backdrop-filter:blur(20px);animation:up .5s ease}
+@keyframes up{from{opacity:0;transform:translateY(10px)}}
+.pth{position:relative;width:150px;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#17171c;flex:none;display:grid;place-items:center}
+.pth img,.pth video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}.pth i{position:relative;font-size:1.4rem;color:rgba(255,255,255,.7)}
+.pin{min-width:0}.pin small{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ac)}.pin b{font-weight:600;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}.pin span{display:block;color:var(--mu);font-size:.76rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cx{margin-left:auto;background:none;border:1px solid var(--hair);color:var(--tx);border-radius:99px;padding:8px 16px;cursor:pointer;font:600 .68rem Inter;letter-spacing:.16em;text-transform:uppercase}
+.opts{display:grid;grid-template-columns:1fr;gap:8px}
+.qrow{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;border:1px solid rgba(255,255,255,.16);background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.02));transition:.25s}
+a.qrow:hover,button.qrow:hover{border-color:var(--ac);transform:translateX(4px);background:rgba(211,19,47,.14)}
+.qrow b{font-size:1.05rem;letter-spacing:.1em;min-width:110px}.qrow span{margin-left:auto;color:var(--mu);font-size:.9rem}
+.qrow .qi{color:var(--ac);font-size:1.2rem}.qrow>i:last-child{font-size:1.2rem}
+.qrow.off{opacity:.38;pointer-events:none}
+.note{color:var(--mu);font-size:.8rem;padding:6px 4px}
+button.qrow.edit b{min-width:0}button.qrow.edit{width:100%;margin-top:10px;font:inherit;color:#fff;cursor:pointer;background:rgba(211,19,47,.14);border-color:rgba(211,19,47,.5);text-align:left}
+.ed{display:none;margin:5vh auto 0;width:calc(100% - 12vw);max-width:920px;min-width:0}
+body:not(.adv) .ed{display:none!important}
+body.adv #work.open,body.adv #photo{display:block}
+body.adv #result-box,body.adv #sites{display:none!important}
+.stage{position:relative;display:block;width:min(100%,calc(55vh*var(--ar,1.78)));aspect-ratio:var(--ar,1.78);margin:0 auto;max-width:100%;border-radius:16px;overflow:hidden;background:#000;line-height:0}
+.stage video{width:100%!important;height:100%!important;display:block;object-fit:fill}
+#cropbox{position:absolute;border:2px solid var(--ac);box-shadow:0 0 0 9999px rgba(0,0,0,.55);pointer-events:none}
+.panel{margin-top:16px;padding:20px;border:1px solid rgba(255,255,255,.16);border-radius:22px;background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.03));backdrop-filter:blur(20px);display:grid;grid-template-columns:minmax(0,1fr);gap:14px;min-width:0}
+.ctl{display:grid;grid-template-columns:100px minmax(0,1fr) 56px;gap:12px;align-items:center;font-size:.85rem}.ctl label{color:var(--mu);letter-spacing:.14em;text-transform:uppercase;font-size:.66rem}
+.ctl input{accent-color:var(--ac);width:100%}.ctl em{font-style:normal;color:var(--mu);text-align:right;font-size:.8rem}
+.chips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.chip{font:600 .72rem Inter;letter-spacing:.08em;padding:11px 0;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;cursor:pointer;transition:.2s}
+.chip:hover:not(:disabled){border-color:var(--ac)}.chip.on{background:var(--ac);border-color:var(--ac)}.chip:disabled{opacity:.3;cursor:not-allowed}
+.sub{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ac);margin-top:4px}
+.acts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.acts button,.pbtns button{font:600 .74rem Inter;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:16px 10px;min-width:0;color:#fff;background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,.03));cursor:pointer;display:flex;gap:10px;align-items:center;justify-content:center;transition:.25s}
+.acts button:hover,.pbtns button:hover{border-color:var(--ac);background:rgba(211,19,47,.16)}.acts button:disabled,.pbtns button:disabled{opacity:.45;cursor:not-allowed}
+.opt2{display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:.85rem;color:var(--mu)}.opt2 select{background:#15151a;color:var(--tx);border:1px solid var(--hair);padding:9px 12px;border-radius:10px;font:inherit}
+#eprog,#pprog{height:3px;background:var(--hair);border-radius:3px;overflow:hidden;display:none;margin-bottom:10px}#eprog i{display:block;height:100%;width:0;background:var(--ac)}
+#pprog i{display:block;height:100%;width:40%;background:var(--ac);animation:sl 1.1s ease-in-out infinite}@keyframes sl{0%{margin-left:-40%}100%{margin-left:100%}}
+.msg{color:var(--mu);font-size:.82rem}
+#eres,#pres{display:none}#eres video,#eres img{max-width:100%;height:auto;max-height:46vh;display:block;margin:0 auto;border-radius:14px;background:#000}#eres audio{width:100%}#eresm{min-width:0}
+.drop{display:grid;place-items:center;gap:4px;padding:26px 14px;border:1.5px dashed rgba(255,255,255,.28);border-radius:18px;cursor:pointer;text-align:center;color:var(--mu);transition:.25s}
+.drop:hover,.drop.hl{border-color:var(--ac);background:rgba(211,19,47,.08)}.drop i{font-size:1.6rem;color:var(--ac)}.drop b{color:var(--tx);font-weight:600}
+.pprev{display:none;text-align:center}.pprev img{max-width:100%;max-height:34vh;border-radius:14px}
+.pbtns{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.chk{border-radius:14px;overflow:hidden;background:#0d1017 linear-gradient(45deg,#1e2433 25%,transparent 25%,transparent 75%,#1e2433 75%),linear-gradient(45deg,#1e2433 25%,transparent 25%,transparent 75%,#1e2433 75%);background-size:20px 20px;background-position:0 0,10px 10px;text-align:center}
+.chk img{max-width:100%;max-height:46vh;display:block;margin:0 auto}
+.lrow{display:flex;gap:8px}.lrow input{flex:1;min-width:0;background:#15151a;color:var(--tx);border:1px solid var(--hair);padding:11px 12px;border-radius:12px;font:inherit;font-size:.82rem}
+@media(max-width:640px){.row{flex-direction:column;gap:2px}.box{flex-direction:column;border-radius:26px}.box button{width:100%}.box .lk{display:none}.box input{padding:10px 14px}.nav{padding:20px 6vw}.pth{width:110px}.ctl{grid-template-columns:84px minmax(0,1fr) 50px}.acts,.pbtns{grid-template-columns:1fr}.seg button{padding:10px 18px}}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="14"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10"/></filter></svg>
+<div id="toastBox"></div>
+<div class="nav"><span class="brand">SkillIssue</span></div>
+<section class="hero">
+  <div class="eye" id="eye">Universal video downloader</div>
+  <h1 id="h1">Download <em>any</em> video.</h1>
+  <p class="lead" id="lead">TikTok, Instagram, Reddit, Twitter, YouTube, Facebook and many more. Paste a link, pick a quality, and save.</p>
+  <div class="seg"><button id="tD" class="on" onclick="setMode('dl')">Download</button><button id="tA" onclick="setMode('adv')">Advance</button></div>
+  <div class="box liquid"><div class="blobs"><s></s><s></s><s></s></div>
+    <i class="ti ti-link lk"></i><input type="text" id="url" placeholder="Paste your URL here" oninput="onUrl()" onkeydown="if(event.key==='Enter')start()" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <button class="g" id="pasteBtn" onclick="pasteOrClear()"><i class="ti ti-clipboard"></i> Paste</button>
+    <button id="submit-btn" onclick="start()"><i class="ti ti-download"></i> Download</button></div>
+  <div id="prev"><div class="pth" id="pth"><img id="pimg" alt=""><i class="ti ti-player-play-filled"></i></div><div class="pin"><small id="psite">Link</small><b id="ptit">Loading preview...</b><span id="purl"></span></div></div>
+  <div id="loader"><div class="sp"></div><div><b id="loader-title">Connecting</b><span id="loader-status-msg"></span></div><button class="cx" onclick="cancelRun();toastMsg('Cancelled')">Cancel</button></div>
+  <div id="error-box"><i class="ti ti-alert-circle"></i><span id="error-msg">Something went wrong.</span></div>
+  <div id="result-box" style="display:none"><div class="rt">Choose your quality</div><div class="opts" id="opts"></div><div id="more"></div><div class="img-grid" id="img-grid"></div></div>
+</section>
+
+<div class="ed" id="work">
+  <div class="rt" style="margin-bottom:10px">Advance editor</div>
+  <div class="msg" id="emsg" style="margin-bottom:10px">Loading the video for editing...</div>
+  <div id="eprog"><i></i></div>
+  <div id="ebody" style="display:none">
+    <div class="stage" id="stage"><video id="v" playsinline controls></video><div id="cropbox"></div></div>
+    <div class="panel">
+      <div class="sub">Trim and crop</div>
+      <div class="ctl"><label>Trim start</label><input type="range" id="ts" min="0" max="1000" value="0"><em id="tsl">0.0s</em></div>
+      <div class="ctl"><label>Trim end</label><input type="range" id="te" min="0" max="1000" value="1000"><em id="tel">0.0s</em></div>
+      <div class="ctl"><label>Crop left</label><input type="range" class="cr" id="cl" min="0" max="90" value="0"><em></em></div>
+      <div class="ctl"><label>Crop right</label><input type="range" class="cr" id="cr" min="0" max="90" value="0"><em></em></div>
+      <div class="ctl"><label>Crop top</label><input type="range" class="cr" id="ct" min="0" max="90" value="0"><em></em></div>
+      <div class="ctl"><label>Crop bottom</label><input type="range" class="cr" id="cb" min="0" max="90" value="0"><em></em></div>
+      <div class="sub">Output</div>
+      <div class="ctl"><label>Quality</label><div class="chips" id="qc"><button class="chip" data-q="360">360P</button><button class="chip" data-q="480">480P</button><button class="chip" data-q="720">720P</button><button class="chip" data-q="1080">1080P</button></div><em></em></div>
+      <div class="ctl"><label>FPS</label><input type="range" id="fps" min="25" max="60" step="1" value="30"><em id="fpsl">30 fps</em></div>
+      <div class="opt2"><label for="bg">Background (video only)</label><select id="bg"><option value="keep">Keep</option><option value="#00ff00">Remove: green screen</option><option value="#000000">Remove: black</option><option value="#ffffff">Remove: white</option></select></div>
+      <div class="acts"><button id="bV"><i class="ti ti-video"></i> Save video</button><button id="bN"><i class="ti ti-volume-off"></i> Video without audio</button><button id="bG"><i class="ti ti-gif"></i> Save as GIF</button><button id="bA"><i class="ti ti-music"></i> Save audio (MP3)</button></div>
+      <div class="msg">Saving with no changes is instant. Edited video runs in real time, so a 30-second clip takes about 30 seconds. GIFs use your quality (up to 720P) and FPS, and are limited to 15 seconds (less at high FPS). Background removal works best on people.</div>
+    </div>
+    <div class="panel" id="eres"><div id="eresm"></div><a class="pill" id="edl" download style="justify-self:start">Download</a></div>
+  </div>
+</div>
+
+<div class="ed" id="photo">
+  <div class="rt" style="margin-bottom:10px">Photo tools</div>
+  <div class="panel" style="margin-top:0">
+    <label class="drop" id="pdrop"><input type="file" id="pfile" accept="image/jpeg,image/png,image/webp" hidden><i class="ti ti-photo-up"></i><b>Tap or drop a photo</b><span>JPG, PNG or WEBP</span></label>
+    <div class="pprev" id="pprev"><img id="psrc" alt=""></div>
+    <div class="pbtns"><button id="pBG" disabled><i class="ti ti-wand"></i> Remove background</button><button id="pLink" disabled><i class="ti ti-link"></i> Get direct link</button></div>
+    <div class="msg" id="pmsg">Choose a photo, then remove its background (transparent PNG) or get a direct link to it.</div>
+    <div id="pprog"><i></i></div>
+    <div id="pres" style="display:none;gap:12px">
+      <div class="chk" id="pchk"><img id="pout" alt=""></div>
+      <div class="lrow" id="plrow" style="display:none"><input id="plink" readonly><button class="pill" id="pcopy" style="cursor:pointer"><i class="ti ti-copy"></i> Copy</button><a class="pill" id="popen" target="_blank" rel="noopener"><i class="ti ti-external-link"></i></a></div>
+      <a class="pill" id="pdl" download="cutout.png" style="justify-self:start">Download PNG</a>
+    </div>
+  </div>
+</div>
+
+<div class="sec" id="sites"><h2>Supported sites</h2><p>Paste a link from any of these sites. Availability depends on the download server.</p>
+  <div class="row"><b>Social</b><span>TikTok, Instagram, Facebook, Twitter / X, Reddit, Snapchat, Pinterest (videos and pins), Threads, Tumblr, LinkedIn, Likee, Kwai, Telegram</span></div>
+  <div class="row"><b>Video</b><span>YouTube, YouTube Shorts, Vimeo, Dailymotion, Twitch clips, Bilibili, Rumble, Streamable, Imgur, Giphy</span></div>
+  <div class="row"><b>Music</b><span>SoundCloud, Bandcamp, and audio saved as MP3</span></div>
+  <div class="row"><b>18+ NSFW</b><span><div class="gate" id="nq">Adults only. <button onclick="document.getElementById('ngate').classList.add('on');document.getElementById('nq').style.display='none'">I am 18 or older</button></div><span id="ngate">Pornhub, XVideos, XNXX, xHamster, RedTube, YouPorn, SpankBang, Eporner, Tube8, Thumbzilla and more adult sites</span></span></div>
+</div>
+<div class="btm">HD quality &nbsp;&middot;&nbsp; No watermark</div>
+
+<script>
+const RENDER_BASE='https://fvz.onrender.com',PROXY_DL=RENDER_BASE+'/api/proxy_download',IMGBB_KEY='9c78a95a1d8d66fac25478c75cffe7c3',$=i=>document.getElementById(i),enc=encodeURIComponent;
+let mode='dl',run=0,ctrl=null,pt=null,pTok=0,title='',items=[],baseName='video',cache={url:'',data:null};
+try{fetch(RENDER_BASE+'/api/server_status',{mode:'no-cors'}).catch(()=>{})}catch(_){}   /* warm the server */
+
+/* ---------- shared UI ---------- */
+function toastMsg(m,err){const b=$('toastBox'),t=document.createElement('div');t.className='toast'+(err?' err':'');t.textContent=(err?'! ':'')+m;b.appendChild(t);requestAnimationFrame(()=>requestAnimationFrame(()=>t.classList.add('show')));setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),500)},3000)}
+function setMsg(t,d){$('loader-title').textContent=t;$('loader-status-msg').textContent=d||''}
+function hideOut(){$('error-box').style.display='none';$('result-box').style.display='none'}
+function showErr(m){$('error-msg').textContent=m;$('error-box').style.display='flex'}
+function cancelRun(){run++;if(ctrl)ctrl.abort();ctrl=null;$('loader').style.display='none';$('submit-btn').disabled=false}
+function updatePasteBtn(){$('pasteBtn').innerHTML=$('url').value.trim()?'<i class="ti ti-x"></i> Clear':'<i class="ti ti-clipboard"></i> Paste'}
+function onUrl(){cancelRun();hideOut();updatePasteBtn();clearTimeout(pt);const u=$('url').value.trim();if(!/^https?:\/\/\S+\.\S+/i.test(u)){$('prev').style.display='none';return}pt=setTimeout(()=>preview(u),350)}
+async function pasteOrClear(){const i=$('url');if(i.value.trim()){i.value='';onUrl();toastMsg('Cleared')}else{try{i.value=(await navigator.clipboard.readText()).trim();onUrl();toastMsg('Link pasted')}catch(e){i.focus()}}}
+function setMode(m){
+  mode=m;document.body.classList.toggle('adv',m==='adv');$('tD').classList.toggle('on',m==='dl');$('tA').classList.toggle('on',m==='adv');
+  $('eye').textContent=m==='adv'?'Advance':'Universal video downloader';
+  $('h1').innerHTML=m==='adv'?'Edit, <em>then</em> save.':'Download <em>any</em> video.';
+  $('lead').textContent=m==='adv'?'Paste a link to trim, crop, pick quality and FPS, make a GIF or save the audio. Or open the photo tools below to remove a background.':'TikTok, Instagram, Reddit, Twitter, YouTube, Facebook and many more. Paste a link, pick a quality, and save.';
+  $('submit-btn').innerHTML=m==='adv'?'<i class="ti ti-scissors"></i> Load video':'<i class="ti ti-download"></i> Download';
+  try{history.replaceState(null,'',m==='adv'?'#advance':location.pathname+location.search)}catch(e){}
+  window.scrollTo({top:0,behavior:'smooth'})}
+
+/* ---------- link preview ---------- */
+const NE=/(youtube\.com|youtu\.be|vimeo\.com|tiktok\.com|twitter\.com|x\.com|reddit\.com|dailymotion\.com|twitch\.tv|streamable\.com|imgur\.com|giphy\.com|soundcloud\.com|bandcamp\.com)$/i;
+async function preview(u){
+  const tok=++pTok;let host='';try{host=new URL(u).hostname.replace(/^www\./,'')}catch(e){return}
+  const im=$('pimg');im.style.display='none';im.removeAttribute('src');const pv=$('pvid');if(pv)pv.remove();title='';
+  $('psite').textContent=host;$('ptit').textContent='Ready';$('purl').textContent=u;$('prev').style.display='flex';
+  const yt=u.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|shorts\/|embed\/))([\w-]{11})/);
+  const setImg=x=>{if(tok===pTok&&x){im.onerror=()=>im.style.display='none';im.onload=()=>im.style.display='block';im.src=x}};
+  if(yt)setImg('https://img.youtube.com/vi/'+yt[1]+'/hqdefault.jpg');
+  if(!NE.test(host))return;
+  $('ptit').textContent='Loading preview...';
+  try{const c=new AbortController(),t=setTimeout(()=>c.abort(),7000),r=await fetch('https://noembed.com/embed?url='+enc(u),{signal:c.signal});clearTimeout(t);const j=await r.json();
+    if(tok!==pTok)return;if(j.thumbnail_url&&!yt)setImg(j.thumbnail_url);if(j.provider_name)$('psite').textContent=j.provider_name;title=j.title||'';$('ptit').textContent=j.title||host}
+  catch(e){if(tok===pTok)$('ptit').textContent='Ready'}
+}
+
+/* ---------- backend ---------- */
+function tf(url,o,ms,sig){const c=new AbortController(),t=setTimeout(()=>c.abort(),ms);if(sig)sig.addEventListener('abort',()=>c.abort());return fetch(url,Object.assign({},o,{signal:c.signal})).finally(()=>clearTimeout(t))}
+async function poll(id,my,sig){
+  const t0=Date.now();let delay=350,fails=0;
+  while(Date.now()-t0<240000){
+    if(my!==run)throw new DOMException('x','AbortError');
+    try{
+      const r=await tf(RENDER_BASE+'/api/status/'+id,{},10000,sig);if(!r.ok)throw new Error('status '+r.status);
+      const d=await r.json();fails=0;
+      if(d.status==='completed')return d;
+      if(d.status==='failed')throw new Error(d.error||'The server could not process this link.');
+      const m={waking_up:['Waking up the server','This can take up to a minute'],pending:['Queued',d.queue_position>1?'Position '+d.queue_position:'Starting'],processing:['Extracting media','Reading the video'],uploading:['Almost ready','Preparing your files']}[d.status]||['Working','Please wait'];setMsg(m[0],m[1]);
+    }catch(e){
+      if(my!==run)throw new DOMException('x','AbortError');
+      if(/server could not|failed/i.test(e.message)&&!/status \d/.test(e.message)&&e.name!=='TypeError')throw e;
+      if(++fails>=6)throw new Error('We can’t reach the download server right now. Please try again shortly.');
+    }
+    await new Promise(o=>setTimeout(o,delay));delay=Math.min(delay*1.15,1200);
+  }
+  throw new Error('This is taking too long. Please try again.');
+}
+async function start(){
+  const url=$('url').value.trim();hideOut();
+  if(!/^https?:\/\/\S+/i.test(url)){showErr('Please paste a valid link starting with http or https.');return}
+  if(cache.url===url&&cache.data){ingest(cache.data);afterIngest();return}   /* same link again: no new request */
+  cancelRun();const my=++run;ctrl=new AbortController();const sig=ctrl.signal;eRun++;$('work').classList.remove('open');
+  $('submit-btn').disabled=true;$('loader').style.display='flex';setMsg('Connecting','Contacting the server');
+  try{
+    let add,tries=0;
+    while(true){try{add=await tf(RENDER_BASE+'/api/add',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url})},45000,sig);break}
+      catch(e){if(my!==run)return;if(++tries>=2)throw new Error('We can’t reach the download server right now. Please try again shortly.');setMsg('Waking up the server','This can take up to a minute')}}
+    if(!add.ok){const j=await add.json().catch(()=>({}));throw new Error(j.error||j.detail||'The server rejected this link.')}
+    const j=await add.json();if(!j.task_id)throw new Error('The server did not return a task.');
+    setMsg('Queued','Task sent to the server');
+    const res=await poll(j.task_id,my,sig);if(my!==run)return;
+    cache={url,data:res};ingest(res);afterIngest()
+  }catch(e){if(my!==run)return;showErr(e.name==='AbortError'?'The request timed out. Please try again.':(e.message||'Server error.'))}
+  finally{if(my===run){$('loader').style.display='none';$('submit-btn').disabled=false}}
+}
+
+/* ---------- reading the server result ---------- */
+const STD=[144,240,360,480,720,1080,1440,2160,4320],snap=n=>STD.reduce((x,y)=>Math.abs(y-n)<Math.abs(x-n)?y:x);
+const fmtSize=b=>b>=1e9?(b/1e9).toFixed(2)+' GB':b>=1e6?Math.round(b/1048576)+' MB':b>0?Math.max(1,Math.round(b/1024))+' KB':'';
+function resOf(o){   /* returns the real short side snapped to a standard size, and whether we trust it */
+  const t=[o.quality,o.resolution,o.label,o.name,o.format].join(' ');let m=t.match(/(\d{3,4})\s*p\b/i);
+  if(m)return{h:snap(+m[1]),firm:true};
+  const w=+o.width,h=+o.height;if(w>=100&&h>=100)return{h:snap(Math.min(w,h)),firm:true};
+  m=t.match(/\b(\d{3,4})\s*[x×]\s*(\d{3,4})\b/);if(m)return{h:snap(Math.min(+m[1],+m[2])),firm:true};
+  if(h>=100)return{h:snap(h),firm:false};
+  return{h:0,firm:false}}
+let imgs=[];
+function ingest(data){
+  const files=data.files||[],ext=n=>((n||'').toLowerCase().match(/\.(\w+)(?:\?|$)/)||[])[1]||'',
+    isImg=f=>['jpg','jpeg','png','webp','gif'].includes(ext(f.name)),isAud=f=>['mp3','m4a','aac','wav','ogg','opus'].includes(ext(f.name));
+  imgs=files.filter(isImg);
+  baseName=(title||'video').replace(/[^\w\- ]+/g,'').trim().slice(0,60)||'video';
+  const mk=(f,link)=>{const aud=isAud(f),r=aud?{h:0,firm:true}:resOf(f);return{link,name:f.name||'',aud,h:r.h,firm:r.firm||aud,done:false,size:+(f.size||f.filesize||f.file_size||f.bytes)||0}};
+  items=files.filter(f=>!isImg(f)&&f.link).map(f=>mk(f,f.link));
+  if(data.direct_link&&!items.some(i=>i.link===data.direct_link))items.push(mk(data,data.direct_link));
+  const g=$('img-grid'),dl=(l,n)=>PROXY_DL+'?url='+enc(l)+'&name='+enc(n);g.innerHTML='';
+  if(imgs.length>1||(imgs.length&&!items.length)){g.style.display='grid';imgs.forEach(m=>{g.innerHTML+=`<div class="img-card"><img src="${m.link}" loading="lazy" alt=""><div class="img-card-overlay"><a href="/${dl(m.link,m.name||'image.jpg')}" class="img-card-btn"><i class="ti ti-download"></i> Save</a></div></div>`})}else g.style.display='none';
+  const first=items.find(i=>!i.aud);cover(first&&first.link,data.thumbnail||data.poster||(imgs[0]&&imgs[0].link));
+}
+function cover(link,fallback){
+  const p=$('pth'),im=$('pimg'),old=$('pvid');if(old)old.remove();
+  const fb=()=>{if(fallback){im.onload=()=>im.style.display='block';im.onerror=()=>im.style.display='none';im.src=fallback}};
+  if(!link){fb();return}
+  const m=document.createElement('video');m.id='pvid';m.muted=true;m.preload='metadata';m.setAttribute('playsinline','');
+  const show=()=>{m.style.display='block';im.style.display='none'};m.onloadedmetadata=()=>{if(isFinite(m.duration)&&m.duration>2)m.currentTime=Math.min(m.duration*.3,40);else m.onloadeddata=show};m.onseeked=show;m.onerror=()=>{m.remove();fb()};m.src=link;p.appendChild(m);
+}
+function afterIngest(){
+  const vids=items.filter(i=>!i.aud);$('prev').style.display='flex';
+  if(!items.length&&!imgs.length){showErr('The server processed the link, but found nothing to download.');return}
+  if(mode==='adv'){if(!vids.length){showErr('No video was found to edit for this link.');return}openEditor();return}
+  showRows();
+}
+
+/* ---------- normal download: 360P / 480P / 720P / 1080P ---------- */
+const TARGETS=[360,480,720,1080];let sizesDone=false;
+function pickFor(h){return items.find(i=>!i.aud&&i.h===h)}
+function rows(){
+  const dl=(l,n)=>PROXY_DL+'?url='+enc(l)+'&name='+enc(n),vids=items.filter(i=>!i.aud),auds=items.filter(i=>i.aud);let html='';
+  if(vids.length){
+    const pending=vids.some(i=>!i.done),any=TARGETS.some(pickFor);
+    if(any){
+      html=TARGETS.map(h=>{const it=pickFor(h);
+        return it?`<a class="qrow" href="/${dl(it.link,baseName+'-'+h+'p.mp4')}"><i class="ti ti-video qi"></i><b>${h}P</b><span>${it.size?fmtSize(it.size):''}</span><i class="ti ti-download"></i></a>`
+                 :`<div class="qrow off"><i class="ti ti-video qi"></i><b>${h}P</b><span>Not available</span><i class="ti ti-download"></i></div>`}).join('');
+      if(TARGETS.some(h=>!pickFor(h)))html+='<div class="note">Need a size that isn’t listed? Use Advanced download and pick any quality.</div>';
+      if(!sizesDone&&!pending){sizesDone=true;sizes()}
+    }else if(pending){html='<div class="note">Checking available qualities...</div>'}
+    else{const b=vids.slice().sort((x,y)=>y.h-x.h)[0];html=`<a class="qrow" href="/${dl(b.link,baseName+(b.h?'-'+b.h+'p':'')+'.mp4')}"><i class="ti ti-video qi"></i><b>${b.h?b.h+'P':'Video'}</b><span>${b.size?fmtSize(b.size):''}</span><i class="ti ti-download"></i></a>`}
+  }else{
+    html=auds.map(i=>{const e=((i.name||'').toLowerCase().match(/\.(\w{2,4})(?:\?|$)/)||[])[1]||'mp3';return`<a class="qrow" href="/${dl(i.link,baseName+'.'+e)}"><i class="ti ti-music qi"></i><b>Audio · ${e.toUpperCase()}</b><span>${i.size?fmtSize(i.size):''}</span><i class="ti ti-download"></i></a>`}).join('')}
+  $('opts').innerHTML=html;
+}
+function sizes(){   /* only the 4 rows that are shown, a quick HEAD each */
+  TARGETS.map(pickFor).filter(i=>i&&!i.size).forEach(i=>{const c=new AbortController();setTimeout(()=>c.abort(),6000);
+    fetch(i.link,{method:'HEAD',signal:c.signal}).then(r=>{const n=+r.headers.get('content-length')||0;if(n){i.size=n;rows()}}).catch(()=>{})})}
+function probe(i){
+  if(i.aud||i.firm||i.done){i.done=true;return}
+  const m=document.createElement('video');m.preload='metadata';m.muted=true;
+  const fin=()=>{i.done=true;m.onloadedmetadata=m.onerror=null;m.removeAttribute('src');m.load();rows()};
+  m.onloadedmetadata=()=>{if(m.videoWidth)i.h=snap(Math.min(m.videoWidth,m.videoHeight));fin()};m.onerror=fin;m.src=i.link}
+function showRows(){
+  const mine=items,vids=items.filter(i=>!i.aud);sizesDone=false;
+  mine.forEach(probe);rows();
+  setTimeout(()=>{if(items===mine){mine.forEach(i=>i.done=true);rows()}},4000);
+  $('more').innerHTML=vids.length?'<button class="qrow edit" onclick="toAdv()"><i class="ti ti-scissors qi"></i><b>Advanced download</b><span>Quality · FPS · GIF</span><i class="ti ti-arrow-right"></i></button>':'';
+  $('result-box').style.display='block';toastMsg('Ready to download')
+}
+function toAdv(){setMode('adv');openEditor()}
+$('tA').addEventListener('click',()=>{if(location.hash!=='#advance')try{history.replaceState(null,'','#advance')}catch(e){}});
+if(location.hash==='#advance')setMode('adv');
+
+/* ---------- advanced editor ---------- */
+let blob=null,blobUrl=null,dur=0,seg=null,segReady=null,lastR=null,eRun=0,srcShort=720,qSel=720,fpsTouched=false;const v=$('v');
+const setBtns=on=>document.querySelectorAll('.acts button').forEach(b=>b.disabled=!on);
+const prog=p=>{$('eprog').firstChild.style.width=Math.max(0,Math.min(1,p))*100+'%'};
+function initQ(){
+  let top=0;document.querySelectorAll('#qc .chip').forEach(b=>{const q=+b.dataset.q,ok=q<=srcShort*1.04;b.disabled=!ok;if(ok)top=q});
+  if(!top){top=360;document.querySelector('#qc .chip').disabled=false}
+  qSel=top;markQ()}
+function markQ(){document.querySelectorAll('#qc .chip').forEach(b=>b.classList.toggle('on',+b.dataset.q===qSel))}
+$('qc').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b&&!b.disabled){qSel=+b.dataset.q;markQ()}});
+$('fps').addEventListener('input',()=>{fpsTouched=true});
+function setup(my){if(my!==eRun)return;dur=v.duration;srcShort=Math.min(v.videoWidth,v.videoHeight)||720;$('stage').style.setProperty('--ar',(v.videoWidth/v.videoHeight)||1.78);['ts','cl','cr','ct','cb'].forEach(i=>$(i).value=0);$('te').value=1000;initQ();upd();$('ebody').style.display='block'}
+async function openEditor(){
+  const c=items.filter(i=>!i.aud).sort((a,b)=>b.h-a.h),pick=c.find(i=>!i.h||i.h<=1080)||c[0];if(!pick){toastMsg('There is no video to edit.',true);return}
+  const my=++eRun;blob=null;if(blobUrl)URL.revokeObjectURL(blobUrl);blobUrl=null;setBtns(false);fpsTouched=false;$('fps').value=30;
+  $('work').classList.add('open');$('ebody').style.display='none';$('eres').style.display='none';$('emsg').textContent='Opening the editor...';$('eprog').style.display='block';prog(0);$('work').scrollIntoView({behavior:'smooth'});
+  v.preload='metadata';v.onloadedmetadata=()=>{setup(my);$('emsg').textContent='Preparing your file for saving...'};v.src=PROXY_DL+'?url='+enc(pick.link)+'&name=video.mp4';
+  try{
+    let r=null;for(const u of [PROXY_DL+'?url='+enc(pick.link)+'&name=video.mp4',pick.link]){try{r=await fetch(u);if(r.ok)break;r=null}catch(e){r=null}}
+    if(!r)throw new Error('Editing needs direct access to the video file, but the server did not allow it. The download server must send an Access-Control-Allow-Origin header on /api/proxy_download.');
+    const len=+r.headers.get('content-length')||0,rd=r.body.getReader(),ch=[];let got=0;
+    for(;;){const x=await rd.read();if(x.done)break;ch.push(x.value);got+=x.value.length;if(len){prog(got/len);if($('ebody').style.display==='block')$('emsg').textContent='Preparing your file for saving... '+Math.round(got/len*100)+'%'}if(my!==eRun)return}
+    if(my!==eRun)return;blob=new Blob(ch,{type:'video/mp4'});blobUrl=URL.createObjectURL(blob);
+    if(v.error||$('ebody').style.display!=='block'){v.onloadedmetadata=()=>setup(my);v.src=blobUrl}
+    setBtns(true);$('eprog').style.display='none';$('emsg').textContent='Ready. Pick quality and FPS, adjust trim and crop, then choose how to save.';
+  }catch(e){if(my===eRun){$('emsg').textContent=e.message||'The video could not be loaded for editing.';$('eprog').style.display='none'}}
+}
+const T=()=>[+$('ts').value/1000*dur,+$('te').value/1000*dur];
+function upd(){let[s,e]=T();if(e<=s+.2){if(document.activeElement===$('ts'))$('ts').value=Math.max(0,$('te').value-20);else $('te').value=Math.min(1000,+$('ts').value+20);[s,e]=T()}
+  $('tsl').textContent=s.toFixed(1)+'s';$('tel').textContent=e.toFixed(1)+'s';$('fpsl').textContent=$('fps').value+' fps';
+  let l=+$('cl').value,r=+$('cr').value,t=+$('ct').value,b=+$('cb').value;if(l+r>90){r=90-l;$('cr').value=r}if(t+b>90){b=90-t;$('cb').value=b}
+  const c=$('cropbox').style;c.left=l+'%';c.right=r+'%';c.top=t+'%';c.bottom=b+'%';document.querySelectorAll('.cr').forEach(x=>x.nextElementSibling.textContent=x.value+'%');
+  if(document.activeElement===$('ts'))v.currentTime=s;if(document.activeElement===$('te'))v.currentTime=e}
+document.querySelectorAll('#work input[type=range]').forEach(x=>x.addEventListener('input',upd));
+const crop=()=>{const W=v.videoWidth,H=v.videoHeight,l=+$('cl').value/100,r=+$('cr').value/100,t=+$('ct').value/100,b=+$('cb').value/100;return{sx:Math.round(W*l),sy:Math.round(H*t),sw:Math.max(2,Math.round(W*(1-l-r))&~1),sh:Math.max(2,Math.round(H*(1-t-b))&~1)}};
+const lib=u=>new Promise((ok,no)=>{const s=document.createElement('script');s.src=u;s.onload=ok;s.onerror=()=>no(new Error('Could not load a required tool. Check your connection.'));document.head.appendChild(s)});
+function loadSeg(){return segReady||(segReady=lib('https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation@0.1.1675465747/selfie_segmentation.js').then(()=>{seg=new SelfieSegmentation({locateFile:f=>'https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation@0.1.1675465747/'+f});seg.setOptions({modelSelection:1});seg.onResults(r=>lastR=r);return seg.initialize()}))}
+async function mkPv(muted){
+  const p=document.createElement('video');p.muted=muted;p.playsInline=true;p.preload='auto';
+  p.style.cssText='position:fixed;right:0;bottom:0;width:64px;height:36px;opacity:.01;pointer-events:none;z-index:-1';document.body.appendChild(p);p.src=blobUrl;
+  await new Promise((ok,no)=>{p.onloadedmetadata=ok;p.onerror=()=>no(new Error('This video format cannot be edited in your browser.'))});return p}
+const scaled=(sw,sh,cap)=>{const k=Math.min(1,cap/Math.min(sw,sh));return{w:Math.max(2,Math.round(sw*k)&~1),h:Math.max(2,Math.round(sh*k)&~1)}};
+const edited=()=>+$('ts').value>0||+$('te').value<1000||['cl','cr','ct','cb'].some(i=>+$(i).value>0)||$('bg').value!=='keep'||qSel<srcShort*.97||fpsTouched;
+const BITRATE={360:1.4e6,480:2.6e6,720:5e6,1080:8e6};
+
+async function recVideo(withAudio){
+  const[s,e]=T(),{sx,sy,sw,sh}=crop(),bg=$('bg').value,fps=+$('fps').value,{w,h}=scaled(sw,sh,qSel);if(bg!=='keep')await loadSeg();
+  const pv=await mkPv(!withAudio),cv=document.createElement('canvas');cv.width=w;cv.height=h;const x=cv.getContext('2d');x.imageSmoothingQuality='high';
+  let st=cv.captureStream(0),vt=st.getVideoTracks()[0];if(!vt||typeof vt.requestFrame!=='function'){st=cv.captureStream(fps);vt=null}   /* exact FPS pacing where supported */
+  let ac=null;
+  if(withAudio){ac=new(window.AudioContext||window.webkitAudioContext)();const ms=ac.createMediaElementSource(pv),dst=ac.createMediaStreamDestination();ms.connect(dst);dst.stream.getAudioTracks().forEach(k=>st.addTrack(k));await ac.resume()}
+  const mt=['video/mp4;codecs=avc1','video/webm;codecs=vp9,opus','video/webm;codecs=vp8,opus','video/webm'].find(m=>MediaRecorder.isTypeSupported(m)),
+    rec=new MediaRecorder(st,Object.assign({videoBitsPerSecond:BITRATE[qSel]||6e6,audioBitsPerSecond:128000},mt?{mimeType:mt}:{})),ch=[];
+  rec.ondataavailable=q=>q.data.size&&ch.push(q.data);
+  pv.currentTime=s;await new Promise(o=>{pv.onseeked=o});pv.onseeked=null;
+  const done=new Promise(o=>rec.onstop=o);rec.start(250);await pv.play();
+  const iv=1000/fps;let nxt=performance.now();
+  const tick=async()=>{if(pv.currentTime>=e||pv.ended){rec.stop();pv.pause();return}
+    const now=performance.now();
+    if(now>=nxt-4){nxt+=iv;if(nxt<now-iv)nxt=now;
+      if(bg==='keep')x.drawImage(pv,sx,sy,sw,sh,0,0,w,h);
+      else{await seg.send({image:pv});if(lastR){x.save();x.clearRect(0,0,w,h);x.drawImage(lastR.segmentationMask,sx,sy,sw,sh,0,0,w,h);x.globalCompositeOperation='source-in';x.drawImage(pv,sx,sy,sw,sh,0,0,w,h);x.globalCompositeOperation='destination-over';x.fillStyle=bg;x.fillRect(0,0,w,h);x.restore()}}
+      if(vt)vt.requestFrame()}
+    prog((pv.currentTime-s)/(e-s));requestAnimationFrame(tick)};
+  tick();await done;if(ac)ac.close();pv.remove();
+  return{b:new Blob(ch,{type:mt||'video/webm'}),ext:(mt||'').startsWith('video/mp4')?'mp4':'webm',kind:'video',tag:qSel+'p-'+fps+'fps',note:qSel+'P · '+fps+' fps'}
+}
+async function gifTools(){await lib('https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js');return URL.createObjectURL(new Blob([await (await fetch('https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.worker.js')).text()],{type:'text/javascript'}))}
+async function makeGif(){
+  const[wk,pv]=await Promise.all([gifTools(),mkPv(true)]);
+  const[s,e0]=T(),fps=+$('fps').value,{sx,sy,sw,sh}=crop(),{w,h}=scaled(sw,sh,Math.min(qSel,720)),e=Math.min(e0,s+Math.min(15,300/fps)),n=Math.max(1,Math.floor((e-s)*fps)),
+    cv=document.createElement('canvas');cv.width=w;cv.height=h;const x=cv.getContext('2d');x.imageSmoothingQuality='high';
+  const gif=new GIF({workers:4,quality:10,width:w,height:h,workerScript:wk});
+  for(let i=0;i<n;i++){pv.currentTime=s+i/fps;await new Promise(o=>{pv.onseeked=o});x.drawImage(pv,sx,sy,sw,sh,0,0,w,h);gif.addFrame(x,{copy:true,delay:Math.round(1000/fps)});prog(i/n*.6)}
+  pv.remove();gif.on('progress',p=>prog(.6+p*.4));
+  const b=await new Promise(o=>{gif.on('finished',o);gif.render()});return{b,ext:'gif',kind:'img',tag:'gif',note:'GIF '+Math.min(qSel,720)+'P · '+fps+' fps · '+(e-s).toFixed(1)+'s'}
+}
+async function makeMp3(){
+  await lib('https://cdnjs.cloudflare.com/ajax/libs/lamejs/1.2.1/lame.min.js');
+  const[s,e]=T(),ac=new(window.AudioContext||window.webkitAudioContext)();let buf;
+  try{buf=await ac.decodeAudioData(await blob.arrayBuffer())}catch(err){ac.close();throw new Error('This video has no audio track that can be read.')}ac.close();
+  const sr=buf.sampleRate,i0=Math.floor(s*sr),i1=Math.min(buf.length,Math.floor(e*sr)),nc=Math.min(2,buf.numberOfChannels),en=new lamejs.Mp3Encoder(nc,sr,128),out=[];
+  const cv=a=>{const o=new Int16Array(i1-i0);for(let i=0;i<o.length;i++){const z=Math.max(-1,Math.min(1,a[i0+i]));o[i]=z<0?z*32768:z*32767}return o};
+  const L=cv(buf.getChannelData(0)),R=nc>1?cv(buf.getChannelData(1)):null;
+  for(let i=0;i<L.length;i+=1152){const a=R?en.encodeBuffer(L.subarray(i,i+1152),R.subarray(i,i+1152)):en.encodeBuffer(L.subarray(i,i+1152));if(a.length)out.push(a);if(i%(1152*200)===0){prog(i/L.length);await new Promise(o=>setTimeout(o))}}
+  const f=en.flush();if(f.length)out.push(f);return{b:new Blob(out,{type:'audio/mpeg'}),ext:'mp3',kind:'audio',tag:'audio'}
+}
+async function go(fn,label){
+  if(!blob){$('emsg').textContent='Still preparing the file. Please wait a moment.';return}v.pause();const bs=document.querySelectorAll('.acts button');bs.forEach(b=>b.disabled=true);$('eres').style.display='none';$('eprog').style.display='block';prog(0);$('emsg').textContent=label;
+  try{const o=await fn(),u=URL.createObjectURL(o.b),m=$('eresm');
+    m.innerHTML=o.kind==='video'?'<video controls playsinline src="'+u+'"></video>':o.kind==='img'?'<img alt="GIF" src="'+u+'">':'<audio controls src="'+u+'"></audio>';
+    $('edl').href=u;$('edl').download=baseName+'-'+(o.tag||'edit')+'.'+o.ext;$('edl').textContent='Download '+o.ext.toUpperCase()+' · '+(o.b.size>=1048576?(o.b.size/1048576).toFixed(1)+' MB':Math.max(1,Math.round(o.b.size/1024))+' KB');
+    $('eres').style.display='grid';$('emsg').textContent='Done'+(o.note?' ('+o.note+')':'')+'. Your file is ready below.';$('eres').scrollIntoView({behavior:'smooth'})}
+  catch(err){$('emsg').textContent='We couldn’t finish this export: '+(err&&err.message||err)}
+  bs.forEach(b=>b.disabled=false);$('eprog').style.display='none'
+}
+$('bV').onclick=()=>go(()=>edited()?recVideo(true):Promise.resolve({b:blob,ext:'mp4',kind:'video',tag:'original'}),edited()?'Exporting video. Please keep this tab open.':'Saving your video...');
+$('bN').onclick=()=>go(()=>recVideo(false),'Exporting video without audio. Please keep this tab open.');
+$('bG').onclick=()=>go(makeGif,'Creating your GIF...');
+$('bA').onclick=()=>go(makeMp3,'Extracting audio...');
+
+/* ---------- photo tools: background removal + direct link ---------- */
+let pFile=null,pUrl=null,pOutUrl=null;
+function pBusy(on,t){$('pprog').style.display=on?'block':'none';$('pBG').disabled=$('pLink').disabled=on||!pFile;if(t)$('pmsg').textContent=t}
+function pPick(f){
+  if(!f)return;if(!/^image\/(jpeg|png|webp)$/i.test(f.type)){toastMsg('Choose a JPG, PNG or WEBP photo.',true);return}
+  pFile=f;if(pUrl)URL.revokeObjectURL(pUrl);pUrl=URL.createObjectURL(f);$('psrc').src=pUrl;$('pprev').style.display='block';$('pres').style.display='none';
+  pBusy(false,f.name.slice(0,30)+' ('+(f.size/1048576).toFixed(2)+' MB) is ready.')}
+$('pfile').onchange=e=>pPick(e.target.files[0]);
+const pd=$('pdrop');['dragenter','dragover'].forEach(n=>pd.addEventListener(n,e=>{e.preventDefault();pd.classList.add('hl')}));['dragleave','drop'].forEach(n=>pd.addEventListener(n,e=>{e.preventDefault();pd.classList.remove('hl')}));
+pd.addEventListener('drop',e=>pPick(e.dataTransfer.files&&e.dataTransfer.files[0]));
+function pShow(src,asLink){
+  $('pout').src=src;$('pres').style.display='grid';$('plrow').style.display=asLink?'flex':'none';
+  if(asLink){$('plink').value=src;$('popen').href=src;$('pdl').style.display='none'}else{$('pdl').href=src;$('pdl').style.display='inline-block'}
+  $('pres').scrollIntoView({behavior:'smooth',block:'nearest'})}
+$('pBG').onclick=async()=>{
+  if(!pFile)return;pBusy(true,'Removing the background. This can take a few seconds...');$('pres').style.display='none';
+  try{
+    const{client}=await import('https://cdn.jsdelivr.net/npm/@gradio/client/dist/index.min.js'),app=await client('eacin/rff');let out=null;
+    const run=async()=>{
+      if(typeof app.submit==='function'){for await(const m of app.submit('/remove_bg',[pFile])){if(m.type==='data'){out=(m.data&&m.data[0]&&m.data[0].url)||(m.data&&m.data[0])||null;break}}}
+      else{const r=await app.predict('/remove_bg',[pFile]);out=(r.data&&r.data[0]&&r.data[0].url)||(r.data&&r.data[0])||null}};
+    await Promise.race([run(),new Promise((_,no)=>setTimeout(()=>no(new Error('timeout')),120000))]);
+    if(!out)throw new Error('empty');
+    const b=await(await fetch(out)).blob();if(pOutUrl)URL.revokeObjectURL(pOutUrl);pOutUrl=URL.createObjectURL(b);
+    pShow(pOutUrl,false);pBusy(false,'Done. Your transparent PNG is ready.');toastMsg('Background removed')
+  }catch(e){pBusy(false,'The background remover is busy right now. Please try again in a moment.');toastMsg('Background removal failed',true)}
+};
+$('pLink').onclick=async()=>{
+  if(!pFile)return;pBusy(true,'Uploading...');$('pres').style.display='none';
+  try{
+    const fd=new FormData();fd.append('image',pFile);fd.append('key',IMGBB_KEY);
+    const j=await(await fetch('https://api.imgbb.com/1/upload',{method:'POST',body:fd})).json();
+    if(!j.success)throw new Error((j.error&&j.error.message)||'Upload failed');
+    pShow(j.data.url,true);pBusy(false,'Done. Your direct link is ready.');toastMsg('Direct link ready')
+  }catch(e){pBusy(false,'The upload failed. Please try again.');toastMsg('Upload failed',true)}
+};
+$('pcopy').onclick=()=>{navigator.clipboard.writeText($('plink').value).then(()=>toastMsg('Link copied')).catch(()=>{$('plink').select();toastMsg('Press Ctrl+C to copy')})};
+</script></body></html>
